@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Answer</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        color: #3b4043;
+        font-family: "Noto Sans JP", "ヒラギノ角ゴ Pro W3",
+          "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka,
+          "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+        font-size: 18px;
+        line-height: 1;
+        -webkit-text-size-adjust: 100%;
+      }
+
+      div {
+        display: block;
+      }
+
+      body,
+      div,
+      dl,
+      dt,
+      dd,
+      ul,
+      ol,
+      li,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      pre,
+      code,
+      form,
+      fieldset,
+      legend,
+      input,
+      textarea,
+      p,
+      blockquote,
+      th,
+      td,
+      figure {
+        margin: 0;
+        padding: 0;
+      }
+      div#wrapper {
+        position: relative;
+        opacity: 1;
+        min-height: 100vh;
+        padding-bottom: 70px;
+        box-sizing: border-box;
+      }
+      div#hamburger {
+        width: 80px;
+        height: 80px;
+        background-color: #003176;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 100;
+        cursor: pointer;
+        display: none;
+      }
+      .menu-trigger {
+        position: relative;
+        width: 30px;
+        height: 21px;
+        margin: 29px 0 0 25px;
+      }
+      .menu-trigger,
+      .menu-trigger span {
+        display: inline-block;
+        transition: all 0.4s;
+        box-sizing: border-box;
+      }
+      a {
+        color: #707070;
+        text-decoration: none;
+      }
+      .menu-trigger span:nth-of-type(1) {
+        top: 0;
+      }
+      .menu-trigger span {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: #98a6b6;
+      }
+      .menu-trigger,
+      .menu-trigger span {
+        display: inline-block;
+        transition: all 0.4s;
+        box-sizing: border-box;
+      }
+
+      header#header {
+        position: fixed;
+        background-color: #fff;
+        width: 100%;
+        height: 90px;
+        z-index: 99;
+      }
+
+      header#header ul#header-menu {
+        position: absolute;
+        top: 31px;
+        right: 31px;
+      }
+      header#header ul#header-menu li {
+        font-size: 16px;
+        margin-left: 48px;
+      }
+      .fll {
+        float: left;
+      }
+      li {
+        display: list-item;
+        text-align: -webkit-match-parent;
+      }
+      ol,
+      ul {
+        list-style: none;
+      }
+
+      header#header ul#header-menu li:nth-child(1) a {
+        display: block;
+        width: 25px;
+        height: 32px;
+      }
+
+      header#header ul#header-menu li:nth-child(2),
+      header#header ul#header-menu li:nth-child(3) {
+        margin-top: 7px;
+      }
+      header#header ul#header-menu li a {
+        color: #707f89;
+      }
+
+      ol,
+      ul {
+        list-style: none;
+      }
+      header#header ul#header-menu li:nth-child(4) a {
+        background-color: #707f89;
+        color: #fff;
+        font-weight: 700;
+        display: inline-block;
+        padding: 8px 28px;
+        border-radius: 16px;
+      }
+
+      /* container */
+      div#container {
+        margin: 0 auto;
+        padding-top: 90px;
+        font-size: 100%;
+      }
+      div.course-title {
+        background-color: #0047b4;
+        padding: 13px 0;
+        color: #fff;
+        width: 100%;
+      }
+      div.course-title a.level1 {
+        width: auto;
+        font-weight: 700;
+        color: #fff;
+        padding-left: 57px;
+      }
+      div.course-title a {
+        display: block;
+        height: 26px;
+      }
+      .fll {
+        float: left;
+      }
+      a {
+        text-decoration: none;
+      }
+      section#checksheet-main {
+        width: calc(100%-60px);
+        padding: 53px 30px 40px;
+      }
+      section {
+        display: block;
+      }
+      div.checksheet-main-container {
+        max-width: 1030px;
+        margin: 0 auto;
+      }
+      .mb30 {
+        margin-bottom: 30px;
+      }
+      .clearfix::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      div.checksheet-main-container h4 {
+        margin: auto;
+        line-height: 160%;
+      }
+      .fw700 {
+        font-weight: 700;
+      }
+      .fs24 {
+        font-size: 24px;
+      }
+      .fll {
+        float: left;
+      }
+      h4 {
+        display: block;
+        margin-block-start: 1.33em;
+        margin-block-end: 1.33em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        font-weight: bold;
+      }
+      div.checksheet-main-container h4 span {
+        color: #fff;
+        background-color: #0047b4;
+        border-radius: 7px;
+        padding: 0 18px;
+        display: inline-block;
+        margin-right: 10px;
+      }
+      .fs15 {
+        font-size: 15px;
+      }
+      div.checksheet-main-container h4 {
+        line-height: 160%;
+      }
+      .fw700 {
+        font-weight: 700;
+      }
+      .br-sp {
+        display: none;
+      }
+      p.movie-time {
+        padding-left: 25px;
+        padding-bottom: 10px;
+        color: #98a6b5;
+        margin-top: 15px;
+      }
+      .fs14 {
+        font-size: 14px;
+      }
+      .flr {
+        float: right;
+      }
+      p {
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+      }
+      input,
+      textarea,
+      select {
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+      }
+      input {
+        appearance: none;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        font: inherit;
+        outline: none;
+      }
+      ol,
+      ul {
+        list-style: none;
+      }
+      ol {
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        padding-inline-start: 0px;
+      }
+      .area-question li {
+        list-style: none;
+      }
+      li {
+        display: list-item;
+        text-align: -webkit-match-parent;
+      }
+      dl {
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+      }
+      .area-question .question {
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        width: 100%;
+        border-top: 1px solid #a3a3a3;
+        border-bottom: 1px solid #a3a3a3;
+        position: relative;
+      }
+      .area-question .question .number {
+        display: inline-block;
+        background: #0047b4;
+        border-radius: 50%;
+        padding: 1em 0.8em;
+        margin-right: 15px;
+        color: white;
+        text-align: center;
+      }
+      .area-question .question .first-half {
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+      }
+      .area-question .answer {
+        padding: 10px 20px 20px;
+      }
+      .area-question .answer label {
+        display: block;
+        position: relative;
+        cursor: pointer;
+        padding: 5px 0 5px 40px;
+        border-radius: 2px;
+        line-height: 130%;
+        width: 100%;
+      }
+      .area-question .answer label:before {
+        position: absolute;
+        content: "";
+        top: 50%;
+        left: -10px;
+        width: 32px;
+        height: 32px;
+        margin-top: -15px;
+        background: #cdd6dd;
+        border-radius: 50%;
+        line-height: 1;
+      }
+      input[type="radio"]:checked + label:after {
+        position: absolute;
+        content: "";
+        top: 50%;
+        left: 0;
+        width: 15px;
+        height: 15px;
+        margin-top: -6px;
+        margin-left: -1px;
+        border-radius: 50%;
+        background: #0047b4;
+        line-height: 1;
+      }
+      section#checksheet-sub {
+        background-color: #f0f3f5;
+        padding: 40px 0 120px;
+      }
+      .tac {
+        text-align: center;
+      }
+
+      .fw700 {
+        font-weight: 700;
+      }
+      section#checksheet-sub div.btn p.overimg {
+        display: block;
+        background-color: #0047b4;
+        border-radius: 7px;
+        color: #fff;
+        padding: 28px 0;
+        max-width: 730px;
+        width: 100%;
+        margin: 0 auto;
+      }
+      footer#footer {
+        padding: 25px 0;
+        background-color: #98a6b6;
+        color: #fff;
+        font-size: 13px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+      }
+      footer {
+        display: block;
+      }
+      .lh160 {
+        line-height: 160%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper" style="opacity: 1">
+      <div id="hamburger" class="overimg">
+        <a class="menu-trigger" href="#">
+          <span></span>
+          <span></span>
+          <span></span>
+        </a>
+      </div>
+
+      <!-- header -->
+      <header id="header">
+        <nav>
+          <ul id="header-menu" class="clearfix">
+            <li class="fll">
+              <span><a class="overimg" href="/top"></a></span>
+            </li>
+            <li class="fll">
+              <span><a class="overimg" href="/categories">講座一覧</a></span>
+            </li>
+            <li class="fll">
+              <span
+                ><a class="overimg" href="/mypage" style="opacity: 1"
+                  >マイページ</a
+                ></span
+              >
+            </li>
+            <li class="fll">
+              <span
+                ><a
+                  data-confirm="ログアウトしますか？"
+                  class="overimg"
+                  rel="nofollow"
+                  data-method="post"
+                  href="/logout"
+                  style="opacity: 1"
+                  >ログアウト</a
+                ></span
+              >
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- container -->
+      <div id="container">
+        <div class="course-title clearfix">
+          <a class="fll overimg level1" href="/videos/14">Jim Goes Fishing</a>
+        </div>
+        <section id="checksheet-main">
+          <div class="checksheet-main-container">
+            <div class="clearfix mb30">
+              <h4 class="fw700 fs24 fll">
+                <span class="fs15">チャプター1</span> <br class="br-sp" />Jim
+                Goes Fishing
+              </h4>
+              <p class="movie-time fs14 flr">1分</p>
+            </div>
+
+            <form
+              action="/checksheets#post-anchor"
+              accept-charset="UTF-8"
+              method="post"
+            >
+              <input name="utf8" type="hidden" value="✓" /><input
+                type="hidden"
+                name="authenticity_token"
+                value="1Yr5feZjFS6ZNbkDxX7khhZhq16CDMgPsLGcHCubCYp1AplGlagQnztULIf91WLwn5rgX9wTCrdfUiyP8xH8FQ=="
+              />
+              <ol class="area-question">
+                <li>
+                  <dl>
+                    <dt class="question">
+                      <p class="number">Q1</p>
+                      <p class="first-half" style="width: 832px">
+                        お父さんはジムに何を持ってきなさいと言いましたか？
+                      </p>
+                    </dt>
+                    <dd class="answer">
+                      <input
+                        type="radio"
+                        name="answer[radio0]"
+                        id="select0_1"
+                        value="1"
+                      />
+                      <label for="select0_1">Fishing rods</label>
+                      <input
+                        type="radio"
+                        name="answer[radio0]"
+                        id="select0_2"
+                        value="2"
+                      />
+                      <label for="select0_2">Cooler</label>
+                      <input
+                        type="radio"
+                        name="answer[radio0]"
+                        id="select0_3"
+                        value="3"
+                      />
+                      <label for="select0_3">Caps</label>
+                      <input
+                        type="radio"
+                        name="answer[radio0]"
+                        id="select0_4"
+                        value="4"
+                      />
+                      <label for="select0_4">Jakets</label>
+                    </dd>
+                  </dl>
+                </li>
+                <li>
+                  <dl>
+                    <dt class="question">
+                      <p class="number">Q2</p>
+                      <p class="first-half" style="width: 832px">
+                        のどが乾いたジムは何を飲みましたか？
+                      </p>
+                    </dt>
+                    <dd class="answer">
+                      <input
+                        type="radio"
+                        name="answer[radio1]"
+                        id="select1_1"
+                        value="1"
+                      />
+                      <label for="select1_1">Water</label>
+                      <input
+                        type="radio"
+                        name="answer[radio1]"
+                        id="select1_2"
+                        value="2"
+                      />
+                      <label for="select1_2">Apple juice</label>
+                      <input
+                        type="radio"
+                        name="answer[radio1]"
+                        id="select1_3"
+                        value="3"
+                      />
+                      <label for="select1_3">Coke</label>
+                      <input
+                        type="radio"
+                        name="answer[radio1]"
+                        id="select1_4"
+                        value="4"
+                      />
+                      <label for="select1_4">Oolong tea</label>
+                    </dd>
+                  </dl>
+                </li>
+                <li>
+                  <dl>
+                    <dt class="question">
+                      <p class="number">Q3</p>
+                      <p class="first-half" style="width: 832px">
+                        おなかがすいたジムはなにを食べましたか？
+                      </p>
+                    </dt>
+                    <dd class="answer">
+                      <input
+                        type="radio"
+                        name="answer[radio2]"
+                        id="select2_1"
+                        value="1"
+                      />
+                      <label for="select2_1">Apple</label>
+                      <input
+                        type="radio"
+                        name="answer[radio2]"
+                        id="select2_2"
+                        value="2"
+                      />
+                      <label for="select2_2">Orange</label>
+                      <input
+                        type="radio"
+                        name="answer[radio2]"
+                        id="select2_3"
+                        value="3"
+                      />
+                      <label for="select2_3">Chocolate</label>
+                      <input
+                        type="radio"
+                        name="answer[radio2]"
+                        id="select2_4"
+                        value="4"
+                      />
+                      <label for="select2_4">Canele</label>
+                    </dd>
+                  </dl>
+                </li>
+                <li>
+                  <dl>
+                    <dt class="question">
+                      <p class="number">Q4</p>
+                      <p class="first-half" style="width: 832px">
+                        ジムがつりあげたものはなんでしたか？
+                      </p>
+                    </dt>
+                    <dd class="answer">
+                      <input
+                        type="radio"
+                        name="answer[radio3]"
+                        id="select3_1"
+                        value="1"
+                      />
+                      <label for="select3_1">Octopus</label>
+                      <input
+                        type="radio"
+                        name="answer[radio3]"
+                        id="select3_2"
+                        value="2"
+                      />
+                      <label for="select3_2">Boots</label>
+                      <input
+                        type="radio"
+                        name="answer[radio3]"
+                        id="select3_3"
+                        value="3"
+                      />
+                      <label for="select3_3">Squid</label>
+                      <input
+                        type="radio"
+                        name="answer[radio3]"
+                        id="select3_4"
+                        value="4"
+                      />
+                      <label for="select3_4">Lobster</label>
+                    </dd>
+                  </dl>
+                </li>
+                <div class="field">
+                  <input
+                    type="hidden"
+                    name="chapter_number"
+                    id="chapter_number"
+                    value="2"
+                  />
+                  <input
+                    type="hidden"
+                    name="video_id"
+                    id="video_id"
+                    value="14"
+                  />
+                </div>
+              </ol>
+            </form>
+          </div>
+        </section>
+        <section id="checksheet-sub">
+          <div class="actions, btn fw700 tac">
+            <div class="submit-disable">
+              <p class="overimg" style="opacity: 1">送信済み</p>
+            </div>
+          </div>
+        </section>
+      </div>
+      <!-- /container -->
+      <footer id="footer">
+        <p class="tac lh160">
+          © Institute for Educational Research <br class="br-sp" />All Rights
+          Reserved.
+        </p>
+      </footer>
+      <script src="https://unpkg.com/@xapi/xapi"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+      <script type="text/javascript">
+        //--------------XAPI------------------------
+        // Create LRS connection
+        const endpoint = "https://testxapi123.lrs.io/xapi/";
+        const username = "testxapi";
+        const password = "testxapi";
+        const auth = XAPI.toBasicAuth(username, password);
+        const xapi = new XAPI({
+          endpoint: endpoint,
+          auth: auth,
+        });
+
+        function getLabel(forText) {
+          var labels = document.getElementsByTagName("LABEL");
+          for (var i = 0; i < labels.length; i++) {
+            if (labels[i].htmlFor != "") {
+              var elem = document.getElementById(labels[i].htmlFor);
+              if (elem) elem.label = labels[i];
+            }
+          }
+        }
+
+        function sendXAPIStatement(object, desc, answer) {
+          const xapiStatement = {
+            actor: {
+              name: "test001",
+              mbox: "mailto:test001@gmail.com",
+              objectType: "Agent",
+            },
+            verb: {
+              id: "http://adlnet.gov/expapi/verbs/answered",
+              display: { "en-us": "answered" },
+            },
+            object: {
+              id: "http://adlnet.gov/expapi/activities/question",
+              definition: {
+                name: { "en-us": object },
+                description: { "en-us": desc },
+              },
+            },
+            context: {
+              contextActivities: {
+                parent: [
+                  {
+                    id: "https://demo.flak.works/categories/34/videos",
+                    definition: {
+                      name: {
+                        "en-US": "Jim Goes Fishing",
+                      },
+                    },
+                  },
+                ],
+              },
+              extensions: {
+                "https://demo.flak.works/checksheet_answers/draft": {
+                  user_id: 4,
+                  video_id: 14,
+                  answer: answer,
+                },
+              },
+            },
+            result: {
+              success: true,
+            },
+          };
+
+          console.log("req: ", xapiStatement);
+
+          // Send your statement
+          xapi.sendStatement({
+            statement: xapiStatement,
+          });
+        }
+
+        var ans1 = 0;
+        var ans2 = 0;
+        var ans3 = 0;
+        var ans4 = 0;
+
+        const q1 = document.getElementsByClassName("first-half")[0].innerHTML;
+        const q2 = document.getElementsByClassName("first-half")[1].innerHTML;
+        const q3 = document.getElementsByClassName("first-half")[2].innerHTML;
+        const q4 = document.getElementsByClassName("first-half")[3].innerHTML;
+
+        $(document).on("change", "input[type=radio]", function () {
+          var ans11 = $('[name="answer[radio0]"]:checked')[0];
+          var ans22 = $('[name="answer[radio1]"]:checked')[0];
+          var ans33 = $('[name="answer[radio2]"]:checked')[0];
+          var ans44 = $('[name="answer[radio3]"]:checked')[0];
+
+          if (typeof ans11 != "undefined" && ans11.value != ans1) {
+            sendXAPIStatement(
+              q1,
+              $("label[for='" + ans11.id + "']").text(),
+              ans11.value
+            );
+            ans1 = ans11.value;
+          } else if (typeof ans22 != "undefined" && ans22.value != ans2) {
+            sendXAPIStatement(
+              q2,
+              $("label[for='" + ans22.id + "']").text(),
+              ans22.value
+            );
+            ans2 = ans22.value;
+          } else if (typeof ans33 != "undefined" && ans33.value != ans3) {
+            sendXAPIStatement(
+              q3,
+              $("label[for='" + ans33.id + "']").text(),
+              ans33.value
+            );
+            ans3 = ans33.value;
+          } else if (typeof ans44 != "undefined" && ans44.value != ans4) {
+            sendXAPIStatement(
+              q4,
+              $("label[for='" + ans44.id + "']").text(),
+              ans44.value
+            );
+            ans4 = ans44.value;
+          }
+        });
+      </script>
+    </div>
+  </body>
+</html>

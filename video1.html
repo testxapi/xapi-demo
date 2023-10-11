@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jim Goes Fishing</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        color: #3b4043;
+        font-family: "Noto Sans JP", "ヒラギノ角ゴ Pro W3",
+          "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka,
+          "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+        font-size: 18px;
+        line-height: 1;
+        -webkit-text-size-adjust: 100%;
+      }
+
+      div {
+        display: block;
+      }
+
+      body,
+      div,
+      dl,
+      dt,
+      dd,
+      ul,
+      ol,
+      li,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      pre,
+      code,
+      form,
+      fieldset,
+      legend,
+      input,
+      textarea,
+      p,
+      blockquote,
+      th,
+      td,
+      figure {
+        margin: 0;
+        padding: 0;
+      }
+      div#wrapper {
+        position: relative;
+        opacity: 1;
+        min-height: 100vh;
+        padding-bottom: 70px;
+        box-sizing: border-box;
+      }
+      div#hamburger {
+        width: 80px;
+        height: 80px;
+        background-color: #003176;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 100;
+        cursor: pointer;
+        display: none;
+      }
+      .menu-trigger {
+        position: relative;
+        width: 30px;
+        height: 21px;
+        margin: 29px 0 0 25px;
+      }
+      .menu-trigger,
+      .menu-trigger span {
+        display: inline-block;
+        transition: all 0.4s;
+        box-sizing: border-box;
+      }
+      a {
+        color: #707070;
+        text-decoration: none;
+      }
+      .menu-trigger span:nth-of-type(1) {
+        top: 0;
+      }
+      .menu-trigger span {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: #98a6b6;
+      }
+      .menu-trigger,
+      .menu-trigger span {
+        display: inline-block;
+        transition: all 0.4s;
+        box-sizing: border-box;
+      }
+
+      header#header {
+        position: fixed;
+        background-color: #fff;
+        width: 100%;
+        height: 90px;
+        z-index: 99;
+      }
+
+      header#header ul#header-menu {
+        position: absolute;
+        top: 31px;
+        right: 31px;
+      }
+      header#header ul#header-menu li {
+        font-size: 16px;
+        margin-left: 48px;
+      }
+      .fll {
+        float: left;
+      }
+      li {
+        display: list-item;
+        text-align: -webkit-match-parent;
+      }
+      ol,
+      ul {
+        list-style: none;
+      }
+
+      header#header ul#header-menu li:nth-child(1) a {
+        display: block;
+        width: 25px;
+        height: 32px;
+      }
+
+      header#header ul#header-menu li:nth-child(2),
+      header#header ul#header-menu li:nth-child(3) {
+        margin-top: 7px;
+      }
+      header#header ul#header-menu li a {
+        color: #707f89;
+      }
+
+      ol,
+      ul {
+        list-style: none;
+      }
+      header#header ul#header-menu li:nth-child(4) a {
+        background-color: #707f89;
+        color: #fff;
+        font-weight: 700;
+        display: inline-block;
+        padding: 8px 28px;
+        border-radius: 16px;
+      }
+
+      /* container */
+      div#container {
+        margin: 0 auto;
+        padding-top: 90px;
+        font-size: 100%;
+      }
+      section {
+        display: block;
+      }
+      .movie-youtube {
+        position: relative;
+        width: 100%;
+        height: 0px;
+        padding-top: 56.25%;
+      }
+      iframe {
+        overflow-clip-margin: content-box !important;
+        border-style: inset;
+        border-color: initial;
+        border-image: initial;
+        overflow: clip !important;
+      }
+      .movie-youtube iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      video {
+        overflow-clip-margin: content-box !important;
+        border-style: inset;
+        border-color: initial;
+        border-image: initial;
+        overflow: clip !important;
+      }
+      .movie-youtube video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      div.course-title {
+        margin-top: 12px;
+        background-color: #0047b4;
+        padding: 13px 0;
+        color: #fff;
+      }
+      div.course-title a.level1 {
+        width: auto;
+        font-weight: 700;
+        color: #fff;
+        padding-left: 57px;
+      }
+      div.course-title a {
+        display: block;
+        width: 61px;
+        height: 26px;
+      }
+      section#course-detail-main {
+        width: calc(100% - 60px);
+        padding: 60px 30px 62px;
+      }
+      section#course-detail-main {
+        background-color: #f0f3f5;
+        margin-bottom: 70px;
+      }
+      div.course-detail-main-container {
+        max-width: 1030px;
+        margin: 0 auto;
+      }
+      div.course-detail-main-container h4 {
+        line-height: 160%;
+        margin-bottom: 40px;
+      }
+      .clearfix::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      div.course-detail-support-container {
+        max-width: 920px;
+        margin: 0 auto;
+      }
+      .mb20 {
+        margin-bottom: 20px;
+      }
+      section#course-detail-second {
+        width: calc(100% - 60px);
+        padding: 60px 30px 90px;
+        background-color: #f0f3f5;
+      }
+      .tac {
+        text-align: center;
+      }
+      .mb50 {
+        margin-bottom: 50px;
+      }
+      .fw700 {
+        font-weight: 700;
+      }
+      .fs24 {
+        font-size: 24px;
+      }
+      .wizard a:first-child {
+        margin-left: 0;
+      }
+      .wizard a.selected {
+        background-color: #c5c6c7;
+        color: #fff;
+      }
+      .wizard a.selected {
+        background-color: #c5c6c7;
+        color: #fff;
+      }
+      .wizard a {
+        padding: 22px 0px 21px;
+        position: relative;
+        display: inline-block;
+        width: 33%;
+        text-align: center;
+        text-decoration: none;
+        background: #dddedf;
+        cursor: pointer;
+        font-weight: 700;
+      }
+      .wizard:not(.left-arrow) a.selected:after {
+        border-left-color: #c5c6c7;
+      }
+      .wizard:not(.left-arrow) a:after {
+        width: 0;
+        height: 0;
+        border-top: 30px inset transparent;
+        border-bottom: 30px inset transparent;
+        border-left: 30px solid #dddedf;
+        position: absolute;
+        content: "";
+        top: 0;
+        right: -30px;
+        z-index: 2;
+      }
+
+      .wizard:not(.left-arrow) a:after {
+        width: 0;
+        height: 0;
+        border-top: 30px inset transparent;
+        border-bottom: 30px inset transparent;
+        border-left: 30px solid #dddedf;
+        position: absolute;
+        content: "";
+        top: 0;
+        right: -30px;
+        z-index: 2;
+      }
+
+      .wizard a:first-child:before,
+      .wizard a:last-child:after {
+        border: none;
+      }
+
+      .wizard:not(.left-arrow) a:after {
+        width: 0;
+        height: 0;
+        border-top: 30px inset transparent;
+        border-bottom: 30px inset transparent;
+        border-left: 30px solid #dddedf;
+        position: absolute;
+        content: "";
+        top: 0;
+        right: -30px;
+        z-index: 2;
+      }
+      .lh160 {
+        line-height: 160%;
+      }
+
+      .fs16 {
+        font-size: 16px;
+      }
+      .fcg {
+        color: #707070;
+      }
+      .mt40 {
+        margin-top: 40px;
+      }
+
+      .mb40 {
+        margin-bottom: 40px;
+      }
+      hr {
+        border: none;
+        border-bottom: 1px solid #b8b8b8;
+        display: block;
+        unicode-bidi: isolate;
+        margin-block-start: 0.5em;
+        margin-block-end: 0.5em;
+        margin-inline-start: auto;
+        margin-inline-end: auto;
+        overflow: hidden;
+      }
+      div.course-detail-main-container div.btn a {
+        display: block;
+        background-color: #0047b4;
+        border-radius: 7px;
+        max-width: 732px;
+        color: #fff;
+        padding: 24px 0;
+        margin: 0 auto;
+      }
+      footer#footer {
+        padding: 25px 0;
+        background-color: #98a6b6;
+        color: #fff;
+        font-size: 13px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+      }
+      .br-sp {
+        display: none;
+      }
+
+      .tac {
+        text-align: center;
+      }
+      .lh160 {
+        line-height: 160%;
+      }
+      .fs15 {
+        font-size: 15px;
+      }
+      div.course-detail-main-container h4 span {
+        color: #fff;
+        background-color: #0047b4;
+        border-radius: 7px;
+        padding: 0 18px;
+        display: inline-block;
+        margin-right: 10px;
+      }
+      div.course-detail-support-container {
+        max-width: 920px;
+        margin: 0 auto;
+      }
+      div.course-detail-support-container h4 {
+        font-weight: normal;
+        margin-inline-start: 0;
+        margin-left: -56px;
+      }
+      .mb20 {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper" style="opacity: 1">
+      <div id="hamburger" class="overimg">
+        <a class="menu-trigger" href="#">
+          <span></span>
+          <span></span>
+          <span></span>
+        </a>
+      </div>
+
+      <!-- header -->
+      <header id="header">
+        <nav>
+          <ul id="header-menu" class="clearfix">
+            <li class="fll">
+              <span
+                ><a class="overimg" href="/top" style="opacity: 1">.</a></span
+              >
+            </li>
+            <li class="fll">
+              <span
+                ><a class="overimg" href="/categories" style="opacity: 1"
+                  >講座一覧</a
+                ></span
+              >
+            </li>
+            <li class="fll">
+              <span
+                ><a class="overimg" href="/mypage" style="opacity: 1"
+                  >マイページ</a
+                ></span
+              >
+            </li>
+            <li class="fll">
+              <span
+                ><a
+                  data-confirm="ログアウトしますか？"
+                  class="overimg"
+                  rel="nofollow"
+                  data-method="post"
+                  href="/logout"
+                  style="opacity: 1"
+                  >ログアウト</a
+                ></span
+              >
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- container -->
+      <div id="container">
+        <section id="chapter-movie">
+          <div class="movie-youtube">
+            <video
+              preload="auto"
+              id="my-video_html5_api"
+              oncontextmenu="return false;"
+              class="vjs-tech"
+              data-setup="{}"
+              controls
+            >
+              <source
+                src="https://s3-ap-northeast-1.amazonaws.com/elearningapp-s3/var/www/rails_for_nara/elearning-assessment/public/videos/videofiles/14/original_Story05_Jim_Goes_Fishing.mp4?1639452571"
+                type="video/mp4"
+              />
+            </video>
+          </div>
+        </section>
+        <div class="course-title clearfix">
+          <a
+            class="fll overimg level1"
+            href="/categories/34/videos"
+            style="opacity: 1"
+            >英語アニメーション</a
+          >
+        </div>
+        <section id="course-detail-main">
+          <div class="course-detail-main-container">
+            <h4 class="fw700 fs24">
+              <span class="fs15">チャプター1</span> <br class="br-sp" />Jim Goes
+              Fishing
+            </h4>
+            <p>ジムはお父さんと魚釣りに行くようです。</p>
+          </div>
+          <div class="course-detail-support-container">
+            <h4 class="mb20">今回この講座には補助教材はありません。</h4>
+          </div>
+        </section>
+
+        <section id="course-detail-second">
+          <div class="course-detail-main-container">
+            <h2 class="fs24 fw700 tac mb50">研修の進め方</h2>
+
+            <div class="wizard small row ng-cloak mb50">
+              <a class="selected">動画の視聴</a><a>チェックシート</a
+              ><a>アンケート</a>
+            </div>
+
+            <p class="lh160 fs16 fcg">
+              動画を最後まで視聴した後、チェックシートに進んでください。チェック内容がすべて適切ならば、このチャプターは終了です。未記入箇所があった場合やチェック内容が適切でない箇所があった場合は、チャプターを終了することができず、次へ進むことはできません。「動画視聴ページに戻る」ボタンをクリックし、動画を視聴するか、チェックシートをもう一度やり直してください。
+            </p>
+
+            <hr class="mt40 mb40" />
+
+            <div class="btn tac fw700">
+              <a class="overimg" href="./answer1.html">チェックシートへ</a>
+            </div>
+          </div>
+        </section>
+      </div>
+      <!-- /container -->
+      <footer id="footer">
+        <p class="tac lh160">
+          © Institute for Educational Research <br class="br-sp" />All Rights
+          Reserved.
+        </p>
+      </footer>
+
+      <script src="https://unpkg.com/@xapi/xapi"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+      <script>
+        //--------------XAPI------------------------
+        // Create LRS connection
+        const endpoint = "https://testxapi123.lrs.io/xapi/";
+        const username = "testxapi";
+        const password = "testxapi";
+        const auth = XAPI.toBasicAuth(username, password);
+        const xapi = new XAPI({
+          endpoint: endpoint,
+          auth: auth,
+        });
+
+        function videoInit() {
+          const xapiStatement = {
+            actor: {
+              name: "test001",
+              mbox: "mailto:test001@gmail.com",
+              objectType: "Agent",
+            },
+            verb: {
+              id: "http://adlnet.gov/expapi/verbs/initialized",
+              display: { "en-us": "initialized" },
+            },
+            object: {
+              id: "https://demo.flak.works/video?video_id=14",
+              objectType: "Activity",
+              definition: {
+                type: "https://w3id.org/xapi/video/activity-type/video",
+                name: { "en-us": "Jim Goes Fishing" },
+                description: {
+                  "en-us":
+                    "ジムはお父さんと魚釣りに行くようです。\n今回この講座には補助教材はありません。",
+                },
+              },
+            },
+            context: {
+              contextActivities: {
+                category: [
+                  {
+                    id: "https://demo.flak.works/categories/34/videos",
+                  },
+                ],
+              },
+              extensions: {
+                "https://w3id.org/xapi/video/extensions/volume": 1,
+                "https://w3id.org/xapi/video/extensions/user-agent":
+                  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
+                "https://w3id.org/xapi/video/extensions/speed": "1x",
+                "https://w3id.org/xapi/video/extensions/length": 60,
+              },
+            },
+          };
+
+          console.log("req: ", xapiStatement);
+
+          // Send your statement
+          xapi.sendStatement({
+            statement: xapiStatement,
+          });
+        }
+
+        function videoPlay(currentTime) {
+          const xapiStatement = {
+            actor: {
+              name: "test001",
+              mbox: "mailto:test001@gmail.com",
+              objectType: "Agent",
+            },
+            verb: {
+              id: "https://w3id.org/xapi/video/verbs/played",
+              display: { "en-us": "played" },
+            },
+            object: {
+              id: "https://demo.flak.works/video?video_id=14",
+              objectType: "Activity",
+              definition: {
+                type: "https://w3id.org/xapi/video/activity-type/video",
+                name: { "en-us": "Jim Goes Fishing" },
+                description: {
+                  "en-us":
+                    "ジムはお父さんと魚釣りに行くようです。\n今回この講座には補助教材はありません。",
+                },
+              },
+            },
+            result: {
+              extensions: {
+                "https://w3id.org/xapi/video/extensions/time": currentTime,
+              },
+            },
+            context: {
+              contextActivities: {
+                category: [
+                  {
+                    id: "https://demo.flak.works/categories/34/videos",
+                  },
+                ],
+              },
+              extensions: {
+                "https://w3id.org/xapi/video/extensions/length": 60,
+              },
+            },
+          };
+
+          console.log("req: ", xapiStatement);
+
+          // Send your statement
+          xapi.sendStatement({
+            statement: xapiStatement,
+          });
+        }
+
+        function videoPause(currentTime) {
+          const xapiStatement = {
+            actor: {
+              name: "test001",
+              mbox: "mailto:test001@gmail.com",
+              objectType: "Agent",
+            },
+            verb: {
+              id: "https://w3id.org/xapi/video/verbs/paused",
+              display: { "en-us": "paused" },
+            },
+            object: {
+              id: "https://demo.flak.works/video?video_id=14",
+              objectType: "Activity",
+              definition: {
+                type: "https://w3id.org/xapi/video/activity-type/video",
+                name: { "en-us": "Jim Goes Fishing" },
+                description: {
+                  "en-us":
+                    "ジムはお父さんと魚釣りに行くようです。\n今回この講座には補助教材はありません。",
+                },
+              },
+            },
+            result: {
+              extensions: {
+                "https://w3id.org/xapi/video/extensions/progress":
+                  currentTime / 60,
+                "https://w3id.org/xapi/video/extensions/time": currentTime,
+              },
+            },
+            context: {
+              contextActivities: {
+                category: [
+                  {
+                    id: "https://demo.flak.works/categories/34/videos",
+                  },
+                ],
+              },
+              extensions: {
+                "https://w3id.org/xapi/video/extensions/length": 60,
+              },
+            },
+          };
+
+          console.log("req: ", xapiStatement);
+
+          // Send your statement
+          xapi.sendStatement({
+            statement: xapiStatement,
+          });
+        }
+
+        function videoMuted(currentTime) {
+          const xapiStatement = {
+            actor: {
+              name: "test001",
+              mbox: "mailto:test001@gmail.com",
+              objectType: "Agent",
+            },
+            verb: {
+              id: "http://adlnet.gov/expapi/verbs/interacted",
+              display: { "en-us": "interacted" },
+            },
+            object: {
+              id: "https://demo.flak.works/video?video_id=14",
+              objectType: "Activity",
+              definition: {
+                type: "https://w3id.org/xapi/video/activity-type/video",
+                name: { "en-us": "Jim Goes Fishing" },
+                description: {
+                  "en-us":
+                    "ジムはお父さんと魚釣りに行くようです。\n今回この講座には補助教材はありません。",
+                },
+              },
+            },
+            result: {
+              extensions: {
+                "https://w3id.org/xapi/video/extensions/time": currentTime,
+              },
+            },
+            context: {
+              contextActivities: {
+                category: [
+                  {
+                    id: "https://demo.flak.works/categories/34/videos",
+                  },
+                ],
+              },
+              extensions: {
+                "https://w3id.org/xapi/video/extensions/volume": 0,
+                "https://w3id.org/xapi/video/extensions/length": 60,
+              },
+            },
+          };
+
+          console.log("req: ", xapiStatement);
+
+          // Send your statement
+          xapi.sendStatement({
+            statement: xapiStatement,
+          });
+        }
+
+        function videoUnmuted(currentTime) {
+          const xapiStatement = {
+            actor: {
+              name: "test001",
+              mbox: "mailto:test001@gmail.com",
+              objectType: "Agent",
+            },
+            verb: {
+              id: "http://adlnet.gov/expapi/verbs/interacted",
+              display: { "en-us": "interacted" },
+            },
+            object: {
+              id: "https://demo.flak.works/video?video_id=14",
+              objectType: "Activity",
+              definition: {
+                type: "https://w3id.org/xapi/video/activity-type/video",
+                name: { "en-us": "Jim Goes Fishing" },
+                description: {
+                  "en-us":
+                    "ジムはお父さんと魚釣りに行くようです。\n今回この講座には補助教材はありません。",
+                },
+              },
+            },
+            result: {
+              extensions: {
+                "https://w3id.org/xapi/video/extensions/time": currentTime,
+              },
+            },
+            context: {
+              contextActivities: {
+                category: [
+                  {
+                    id: "https://demo.flak.works/categories/34/videos",
+                  },
+                ],
+              },
+              extensions: {
+                "https://w3id.org/xapi/video/extensions/volume": 1,
+                "https://w3id.org/xapi/video/extensions/length": 60,
+              },
+            },
+          };
+
+          console.log("req: ", xapiStatement);
+
+          // Send your statement
+          xapi.sendStatement({
+            statement: xapiStatement,
+          });
+        }
+
+        function videoCompleted() {
+          const xapiStatement = {
+            actor: {
+              name: "test001",
+              mbox: "mailto:test001@gmail.com",
+              objectType: "Agent",
+            },
+            verb: {
+              id: "http://adlnet.gov/expapi/verbs/completed",
+              display: { "en-us": "completed" },
+            },
+            object: {
+              id: "https://demo.flak.works/video?video_id=14",
+              objectType: "Activity",
+              definition: {
+                type: "https://w3id.org/xapi/video/activity-type/video",
+                name: { "en-us": "Jim Goes Fishing" },
+                description: {
+                  "en-us":
+                    "ジムはお父さんと魚釣りに行くようです。\n今回この講座には補助教材はありません。",
+                },
+              },
+            },
+            result: {
+              extensions: {
+                "https://w3id.org/xapi/video/extensions/progress": 1,
+                "https://w3id.org/xapi/video/extensions/time": 60,
+              },
+            },
+            context: {
+              contextActivities: {
+                category: [
+                  {
+                    id: "https://demo.flak.works/categories/34/videos",
+                  },
+                ],
+              },
+              extensions: {
+                "https://w3id.org/xapi/video/extensions/length": 60,
+              },
+            },
+          };
+
+          console.log("req: ", xapiStatement);
+
+          // Send your statement
+          xapi.sendStatement({
+            statement: xapiStatement,
+          });
+        }
+
+        const video = document.getElementById("my-video_html5_api");
+
+        document.addEventListener("DOMContentLoaded", function () {
+          console.log("Trang web đã tải hoàn toàn.");
+          videoInit();
+        });
+
+        video.addEventListener("play", function () {
+          console.log("Video đã bắt đầu chạy");
+          videoPlay(video.currentTime);
+        });
+
+        video.addEventListener("pause", function () {
+          console.log("Video đã tạm dừng");
+          videoPause(video.currentTime);
+        });
+
+        video.addEventListener("ended", function () {
+          console.log("Video đã kết thúc");
+          videoCompleted();
+        });
+
+        // Sự kiện khi trạng thái âm lượng thay đổi
+        video.addEventListener("volumechange", function () {
+          if (video.muted) {
+            console.log("Âm thanh đã được tắt");
+            videoMuted(video.currentTime);
+          } else {
+            console.log("Âm thanh đã được bật");
+            videoUnmuted(video.currentTime);
+          }
+        });
+      </script>
+    </div>
+  </body>
+</html>

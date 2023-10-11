@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      #wrapper {
+        min-height: 100vh;
+      }
+      body {
+        color: #3b4043;
+        font-family: "Noto Sans JP", "ヒラギノ角ゴ Pro W3",
+          "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka,
+          "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+        font-size: 18px;
+        line-height: 1;
+        -webkit-text-size-adjust: 100%;
+      }
+
+      button#btn-open {
+        margin: 24px auto;
+        display: block;
+        background-color: #0047b4;
+        border-radius: 7px;
+        width: 732px;
+        max-width: 732px;
+        color: #fff;
+        padding: 24px 0;
+        margin: 0 auto;
+        font-family: "Noto Sans JP", "ヒラギノ角ゴ Pro W3",
+          "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka,
+          "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+        font-size: 18px;
+      }
+      #modal-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        height: 100vh;
+        z-index: 100;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s ease-in-out;
+      }
+      #modal-container.show {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .modal {
+        position: relative;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 500px;
+        background: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        transition: all 0.25s ease-in-out;
+      }
+      #modal-container.show {
+        opacity: 1;
+        pointer-events: all;
+      }
+      #modal-container.show .modal {
+        top: 100px;
+      }
+      .modal-header {
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #e9ecef;
+      }
+      .modal-header h3 {
+        margin: 0;
+      }
+      .modal-header button#btn-close {
+        border: none;
+        background: none;
+        outline: none;
+        font-size: 20px;
+        cursor: pointer;
+      }
+      .modal-body {
+        padding: 0px 20px 20px;
+      }
+
+      body,
+      div,
+      dl,
+      dt,
+      dd,
+      ul,
+      ol,
+      li,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      pre,
+      code,
+      form,
+      fieldset,
+      legend,
+      input,
+      textarea,
+      p,
+      blockquote,
+      th,
+      td,
+      figure {
+        margin: 0;
+        padding: 0;
+      }
+
+      div {
+        display: block;
+      }
+
+      div#wrapper {
+        position: relative;
+        opacity: 1;
+        min-height: 100vh;
+        padding-bottom: 70px;
+        box-sizing: border-box;
+      }
+      div#hamburger {
+        width: 80px;
+        height: 80px;
+        background-color: #003176;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 100;
+        cursor: pointer;
+        display: none;
+      }
+      .menu-trigger {
+        position: relative;
+        width: 30px;
+        height: 21px;
+        margin: 29px 0 0 25px;
+      }
+      .menu-trigger,
+      .menu-trigger span {
+        display: inline-block;
+        transition: all 0.4s;
+        box-sizing: border-box;
+      }
+      a {
+        color: #707070;
+        text-decoration: none;
+      }
+      .menu-trigger span:nth-of-type(1) {
+        top: 0;
+      }
+      .menu-trigger span {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: #98a6b6;
+      }
+      .menu-trigger,
+      .menu-trigger span {
+        display: inline-block;
+        transition: all 0.4s;
+        box-sizing: border-box;
+      }
+
+      header#header {
+        position: fixed;
+        background-color: #fff;
+        width: 100%;
+        height: 90px;
+        z-index: 99;
+      }
+
+      header#header ul#header-menu {
+        position: absolute;
+        top: 31px;
+        right: 31px;
+      }
+      header#header ul#header-menu li {
+        font-size: 16px;
+        margin-left: 48px;
+      }
+      .fll {
+        float: left;
+      }
+      li {
+        display: list-item;
+        text-align: -webkit-match-parent;
+      }
+      ol,
+      ul {
+        list-style: none;
+      }
+
+      header#header ul#header-menu li:nth-child(1) a {
+        display: block;
+        width: 25px;
+        height: 32px;
+      }
+
+      header#header ul#header-menu li:nth-child(2),
+      header#header ul#header-menu li:nth-child(3) {
+        margin-top: 7px;
+      }
+      header#header ul#header-menu li a {
+        color: #707f89;
+      }
+
+      ol,
+      ul {
+        list-style: none;
+      }
+      header#header ul#header-menu li:nth-child(4) a {
+        background-color: #707f89;
+        color: #fff;
+        font-weight: 700;
+        display: inline-block;
+        padding: 8px 28px;
+        border-radius: 16px;
+      }
+
+      /* container */
+      div#container {
+        margin: 0 auto;
+        padding-top: 90px;
+        font-size: 100%;
+      }
+
+      div.course-title {
+        background-color: #0047b4;
+        padding: 0;
+        color: #fff;
+      }
+      div.course-title a {
+        display: block;
+        width: 61px;
+        height: 26px;
+      }
+      p.course-category-ondemand {
+        background-color: #f9615e;
+      }
+      p.course-category {
+        color: #fff;
+        border-radius: 12px;
+        padding: 7px 0;
+        width: 100px;
+        text-align: center;
+        font-weight: 700;
+      }
+      .fs13 {
+        font-size: 13px;
+      }
+      section#course-detail-main {
+        width: 100%;
+        padding: 60px 30px 62px;
+      }
+      section#course-detail-main {
+        margin: auto;
+        background-color: #f0f3f5;
+        margin-bottom: 70px;
+      }
+      .section-title-line {
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 160%;
+      }
+      .lh180 {
+        line-height: 180%;
+      }
+      div.course-title h2 {
+        font-weight: 700;
+        margin: 12px 0 0 15px;
+      }
+      .mb40 {
+        margin-bottom: 40px;
+      }
+
+      #self-check {
+        margin: 10px auto;
+        top: 0px;
+        z-index: 2147483647;
+        display: block !important;
+      }
+      .fancybox-content {
+        margin: 10px auto;
+        border-radius: 10px;
+        border: 3px solid #d5d5d5;
+        background: #fff;
+        margin: 0;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 44px px;
+        position: relative;
+        text-align: left;
+        vertical-align: middle;
+      }
+      .fancybox-container * {
+        box-sizing: border-box;
+      }
+
+      .clearfix::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      div#self-check div.btn-close.flr {
+        background-repeat: no-repeat;
+        background-position: 15px center;
+        padding-left: 48px;
+      }
+
+      div#self-check div.btn-close {
+        background-color: #0047b4;
+        border-radius: 7px;
+        color: #fff;
+        padding: 8px;
+        cursor: pointer;
+      }
+
+      div#self-check p.detail {
+        background-color: #f0f3f5;
+        padding: 25px 40px;
+        border-radius: 10px;
+      }
+
+      .lh180 {
+        line-height: 180%;
+      }
+
+      .mb25 {
+        margin-bottom: 25px;
+      }
+
+      div#self-check div.btn-close {
+        background-color: #0047b4;
+        border-radius: 7px;
+        color: #fff;
+        padding: 15px;
+        cursor: pointer;
+      }
+
+      .flr {
+        float: right;
+      }
+      .br-pc {
+        display: inline;
+      }
+      hr {
+        border: none;
+        border-bottom: 1px solid #b8b8b8;
+      }
+
+      div#self-check div.self-check-title {
+        border-top: 1px solid #b8b8b8;
+        border-bottom: 1px solid #b8b8b8;
+        padding: 15px 4px;
+        margin-bottom: 10px;
+      }
+      div#self-check div.self-check-title p.course-category {
+        margin-top: 8px;
+        margin-right: 20px;
+      }
+
+      p.course-category-ondemand {
+        background-color: #f9615e;
+      }
+
+      p.course-category {
+        color: #fff;
+        border-radius: 12px;
+        padding: 7px 0;
+        width: 100px;
+        text-align: center;
+        top: 158px;
+        left: 15px;
+        font-weight: 700;
+      }
+
+      .fs13 {
+        font-size: 13px;
+      }
+
+      .lh160 {
+        line-height: 160%;
+      }
+
+      .fll {
+        float: left;
+      }
+
+      .mb30 {
+        margin-bottom: 30px;
+      }
+
+      .chartjs-size-monitor,
+      .chartjs-size-monitor-expand,
+      .chartjs-size-monitor-shrink {
+        display: block;
+        height: 285px;
+        width: 285px;
+        position: absolute;
+        direction: ltr;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        pointer-events: none;
+        visibility: hidden;
+        z-index: -1;
+      }
+
+      .chartjs-render-monitor {
+        animation: chartjs-render-animation 1ms;
+      }
+
+      canvas {
+        pointer-events: none;
+        overflow-clip-margin: content-box;
+        overflow: clip;
+      }
+
+      div#self-check div.rador-chart div.flr {
+        width: 60%;
+      }
+
+      .flr {
+        float: right;
+      }
+
+      .mb20 {
+        margin-bottom: 20px;
+      }
+
+      .fw700 {
+        font-weight: 700;
+      }
+
+      .fs30 {
+        font-size: 30px;
+      }
+
+      .radio-list input[type="radio"]:checked + label:after {
+        content: "";
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        top: 7px;
+        left: 7px;
+        background-color: #0047b4;
+        border-radius: 50%;
+      }
+
+      section#course-detail-second {
+        margin: 0px auto -24px;
+        width: 100%;
+        padding: 60px 30px 90px;
+        background-color: #f0f3f5;
+      }
+
+      section {
+        display: block;
+      }
+
+      .asl {
+        position: relative;
+        transition: opacity 0.3s ease-out 0s;
+      }
+
+      .asl a {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+      }
+
+      a {
+        color: #707070;
+        text-decoration: none;
+      }
+
+      div.course-detail-main-container {
+        max-width: 1030px;
+        margin: 0 auto;
+      }
+
+      div.course-detail-main-container h4 {
+        line-height: 100%;
+        margin-bottom: 40px;
+      }
+
+      .fw700 {
+        font-weight: 700;
+      }
+
+      .fs24 {
+        font-size: 24px;
+      }
+
+      h4 {
+        display: flex;
+        margin-block-start: 1.33em;
+        margin-block-end: 1.33em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+      }
+
+      div.course-detail-main-container div.chapter-box {
+        margin-bottom: 75px;
+      }
+
+      div.course-detail-main-container div.chapter-box div.fll {
+        width: 36%;
+      }
+
+      .movie-youtube {
+        position: relative;
+        width: 100%;
+        height: 0px;
+        padding-top: 56.25%;
+      }
+
+      .mb10 {
+        margin-bottom: 10px;
+      }
+
+      .movie-youtube iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      div.course-detail-main-container div.chapter-box div.fll p.movie-time {
+        padding-left: 25px;
+        padding-bottom: 10px;
+        color: #98a6b5;
+      }
+
+      p {
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+      }
+
+      div.course-detail-main-container div.chapter-box div.flr {
+        width: 60%;
+      }
+
+      div.course-detail-main-container h4 span {
+        color: #fff;
+        background-color: #0047b4;
+        border-radius: 7px;
+        padding: 8px 18px;
+        display: inline-block;
+        margin-right: 10px;
+      }
+
+      .fw700 {
+        font-weight: 700;
+      }
+
+      .fs15 {
+        font-size: 15px;
+        padding-top: 20px;
+        margin-top: -4px;
+        font-weight: bold;
+      }
+      footer#footer {
+        padding: 0;
+        background-color: #98a6b6;
+        color: #fff;
+        font-size: 13px;
+        font-weight: bold;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+      }
+
+      footer {
+        display: block;
+      }
+      .tac {
+        text-align: center;
+      }
+
+      .lh160 {
+        line-height: 160%;
+      }
+      .br-sp {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper" style="opacity: 1; overflow: visible">
+      <div id="hamburger" class="overimg">
+        <a class="menu-trigger" href="#">
+          <span></span>
+          <span></span>
+          <span></span>
+        </a>
+      </div>
+      <header id="header">
+        <nav>
+          <ul id="header-menu" class="clearfix">
+            <li class="fll">
+              <span><a class="overimg" href="/top"></a></span>
+            </li>
+            <li class="fll">
+              <span><a class="overimg" href="/categories">講座一覧</a></span>
+            </li>
+            <li class="fll">
+              <span><a class="overimg" href="/mypage">マイページ</a></span>
+            </li>
+            <li class="fll">
+              <span
+                ><a
+                  data-confirm="ログアウトしますか？"
+                  class="overimg"
+                  rel="nofollow"
+                  data-method="post"
+                  href="/logout"
+                  >ログアウト</a
+                ></span
+              >
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <div id="container">
+        <div class="course-title clearfix">
+          <a href="#" class="fll overimg"></a>
+          <p class="fll fs13 course-category course-category-ondemand">
+            オンデマンド
+          </p>
+          <h2 class="fll">初任者研修講座</h2>
+        </div>
+        <section id="course-detail-main">
+          <div class="course-detail-main-container">
+            <h3 class="section-title-line">英語アニメーション</h3>
+            <hr class="section-title-line-hr" />
+            <p class="lh180 mb40">アニメを見て質問に答えましょう</p>
+            <div class="btn">
+              <button id="btn-open">学習目的の確認とセルフチェック</button>
+            </div>
+            <div id="modal-container">
+              <div
+                id="self-check"
+                style="display: inline-block; width: 95%; max-width: 1060px"
+                class="fancybox-content"
+              >
+                <div class="clearfix">
+                  <h2 class="fs24 fw700 fll">初任者研修講座</h2>
+                  <div
+                    id="btn-close"
+                    class="btn-close flr overimg"
+                    data-fancybox-close=""
+                    style="opacity: 1"
+                  >
+                    <span class="br-pc">とじる</span>
+                  </div>
+                </div>
+                <hr class="mt25 mb25" />
+                <p class="lh180 detail mb25">
+                  研修での学習目標を確認して、現時点での自己評価を入力しましょう。<br />
+                  研修終了後にも評価を更新して、不安があるところなど確認してさらなる学びにつなげてください。
+                </p>
+                <div class="self-check-title clearfix">
+                  <p class="fll fs13 course-category course-category-ondemand">
+                    オンデマンド
+                  </p>
+                  <h2 class="fll lh160">英語アニメーション</h2>
+                </div>
+                <div class="rador-chart clearfix mb30">
+                  <div class="fll">
+                    <div class="chartjs-size-monitor">
+                      <div class="chartjs-size-monitor-expand">
+                        <div class=""></div>
+                      </div>
+                      <div class="chartjs-size-monitor-shrink">
+                        <div class=""></div>
+                      </div>
+                    </div>
+                    <canvas
+                      id="myChart"
+                      width="356"
+                      height="356"
+                      class="chartjs-render-monitor"
+                      style="display: block; height: 285px; width: 285px"
+                    ></canvas>
+                  </div>
+                  <div class="flr">
+                    <h4 class="lh160 mb20 q1">英語のリスニングができる</h4>
+                    <div class="radio-list fs30 fw700 mb30">
+                      1 　<input
+                        type="radio"
+                        id="button-1-1"
+                        name="radio1"
+                        class="199"
+                        value="1"
+                      /><label for="button-1-1">
+                        　<input
+                          type="radio"
+                          id="button-1-2"
+                          name="radio1"
+                          class="199"
+                          value="2"
+                        /><label for="button-1-2">
+                          　<input
+                            type="radio"
+                            id="button-1-3"
+                            name="radio1"
+                            class="199"
+                            value="3"
+                            checked=""
+                          /><label for="button-1-3">
+                            　<input
+                              type="radio"
+                              id="button-1-4"
+                              name="radio1"
+                              class="199"
+                              value="4"
+                            /><label for="button-1-4">
+                              　<input
+                                type="radio"
+                                id="button-1-5"
+                                name="radio1"
+                                class="199"
+                                value="5"
+                              /><label for="button-1-5"> 　5 </label></label
+                            ></label
+                          ></label
+                        ></label
+                      >
+                    </div>
+                    <h4 class="lh160 mb20 q2">英語でアニメの状況がわかる</h4>
+                    <div class="radio-list fs30 fw700 mb30">
+                      1 　<input
+                        type="radio"
+                        id="button-2-1"
+                        name="radio2"
+                        class="200"
+                        value="1"
+                      /><label for="button-2-1">
+                        　<input
+                          type="radio"
+                          id="button-2-2"
+                          name="radio2"
+                          class="200"
+                          value="2"
+                        /><label for="button-2-2">
+                          　<input
+                            type="radio"
+                            id="button-2-3"
+                            name="radio2"
+                            class="200"
+                            value="3"
+                          /><label for="button-2-3">
+                            　<input
+                              type="radio"
+                              id="button-2-4"
+                              name="radio2"
+                              class="200"
+                              value="4"
+                              checked=""
+                            /><label for="button-2-4">
+                              　<input
+                                type="radio"
+                                id="button-2-5"
+                                name="radio2"
+                                class="200"
+                                value="5"
+                              /><label for="button-2-5"> 　5 </label></label
+                            ></label
+                          ></label
+                        ></label
+                      >
+                    </div>
+                    <h4 class="lh160 mb20 q3">英語でアニメのことを話せる</h4>
+                    <div class="radio-list fs30 fw700 mb30">
+                      1 　<input
+                        type="radio"
+                        id="button-3-1"
+                        name="radio3"
+                        class="201"
+                        value="1"
+                      /><label for="button-3-1">
+                        　<input
+                          type="radio"
+                          id="button-3-2"
+                          name="radio3"
+                          class="201"
+                          value="2"
+                        /><label for="button-3-2">
+                          　<input
+                            type="radio"
+                            id="button-3-3"
+                            name="radio3"
+                            class="201"
+                            value="3"
+                          /><label for="button-3-3">
+                            　<input
+                              type="radio"
+                              id="button-3-4"
+                              name="radio3"
+                              class="201"
+                              value="4"
+                              checked=""
+                            /><label for="button-3-4">
+                              　<input
+                                type="radio"
+                                id="button-3-5"
+                                name="radio3"
+                                class="201"
+                                value="5"
+                              /><label for="button-3-5"> 　5 </label>
+                            </label></label
+                          ></label
+                        ></label
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="course-detail-second">
+          <div class="course-detail-main-container">
+            <div class="asl">
+              <h4 class="fw700 fs24">
+                <span class="fs15">チャプター1</span> <br class="br-sp" />Jim
+                Goes Fishing
+              </h4>
+              <div class="chapter-box clearfix">
+                <div class="fll">
+                  <div class="movie-youtube mb10">
+                    <iframe
+                      width="640"
+                      height="360"
+                      src="./chap1.png"
+                      frameborder="0"
+                      allowfullscreen=""
+                    ></iframe>
+                    <p class="movie-time fs14">1分1秒</p>
+                  </div>
+                </div>
+                <div class="flr">
+                  <p>ジムはお父さんと魚釣りに行くようです。</p>
+                </div>
+              </div>
+              <a href="./video1.html"></a>
+            </div>
+            <div class="asl">
+              <h4 class="fw700 fs24">
+                <span class="fs15">チャプター2</span> <br class="br-sp" />We
+                like picnics
+              </h4>
+              <div class="chapter-box clearfix">
+                <div class="fll">
+                  <div class="movie-youtube mb10">
+                    <iframe
+                      width="640"
+                      height="360"
+                      src="./chap2.png"
+                      frameborder="0"
+                      allowfullscreen=""
+                    ></iframe>
+                    <p class="movie-time fs14">1分0秒</p>
+                  </div>
+                </div>
+                <div class="flr">
+                  <p>クラスメイトでピクニックにいったようです。</p>
+                </div>
+              </div>
+              <a href="#"></a>
+            </div>
+          </div>
+        </section>
+      </div>
+      <footer id="footer">
+        <p class="tac lh160">
+          © Institute for Educational Research <br class="br-sp" />All Rights
+          Reserved.
+        </p>
+      </footer>
+    </div>
+
+    <script src="https://unpkg.com/@xapi/xapi"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+    <script>
+      //---------------------Popup-----------------------------
+      const open = document.getElementById("btn-open");
+      const close = document.getElementById("btn-close");
+
+      const modal_container = document.getElementById("modal-container");
+      const modal_demo = document.getElementById("modal-demo");
+
+      open.addEventListener("click", () => {
+        modal_container.classList.add("show");
+      });
+      close.addEventListener("click", () => {
+        modal_container.classList.remove("show");
+      });
+
+      //--------------XAPI------------------------
+      // Create LRS connection
+      const endpoint = "https://testxapi123.lrs.io/xapi/";
+      const username = "testxapi";
+      const password = "testxapi";
+      const auth = XAPI.toBasicAuth(username, password);
+      const xapi = new XAPI({
+        endpoint: endpoint,
+        auth: auth,
+      });
+
+      function sendXAPIStatement(
+        verbId,
+        verb,
+        objectId,
+        object,
+        desc,
+        question,
+        answer
+      ) {
+        const xapiStatement = {
+          actor: {
+            name: "test001",
+            mbox: "mailto:test001@gmail.com",
+            objectType: "Agent",
+          },
+          verb: {
+            id: verbId,
+            display: { "en-us": verb },
+          },
+          object: {
+            id: objectId,
+            definition: {
+              name: { "en-us": object },
+              description: { "en-us": desc },
+            },
+          },
+          context: {
+            contextActivities: {
+              parent: [
+                {
+                  id: "https://demo.flak.works/categories/34/videos",
+                  definition: {
+                    name: {
+                      "en-US": "英語アニメーション",
+                    },
+                  },
+                },
+              ],
+            },
+            extensions: {
+              "https://demo.flak.works/self_checks/save": {
+                user_id: 4,
+                category_id: 34,
+                assessment_item_id: question,
+                answer: answer,
+              },
+            },
+          },
+          result: {
+            success: true,
+          },
+        };
+
+        console.log("req: ", xapiStatement);
+
+        // Send your statement
+        xapi.sendStatement({
+          statement: xapiStatement,
+        });
+      }
+
+      //---------------------Chart-----------------------------
+
+      var radio1 = 3;
+      var radio2 = 4;
+      var radio3 = 4;
+
+      const q1 = document.getElementsByClassName("q1")[0].innerHTML;
+      const q2 = document.getElementsByClassName("q2")[0].innerHTML;
+      const q3 = document.getElementsByClassName("q3")[0].innerHTML;
+
+      const ques1 = document.getElementsByName("radio1")[0].className;
+      const ques2 = document.getElementsByName("radio2")[0].className;
+      const ques3 = document.getElementsByName("radio3")[0].className;
+
+      var data = {
+        labels: ["①", "②", "③"],
+        datasets: [
+          {
+            label: "自己評価チャート",
+            backgroundColor: "RGBA(60,154,193, 0.3)",
+            borderColor: "RGBA(54,154,196, 1)",
+            pointBackgroundColor: "RGB(54,154,196)",
+            borderWidth: 2,
+            data: [radio1, radio2, radio3],
+            min: 0,
+            max: 5,
+            stepSize: 1,
+          },
+        ],
+      };
+      const ctx = document.getElementById("myChart");
+
+      var chart = new Chart(ctx, {
+        type: "radar",
+        data: data,
+        options: {
+          scale: {
+            r: {
+              min: 0,
+              max: 5,
+              stepSize: 1,
+            },
+          },
+        },
+      });
+
+      $(document).on("change", "input[type=radio]", function () {
+        var radio11 = $('[name="radio1"]:checked').val();
+        var radio22 = $('[name="radio2"]:checked').val();
+        var radio33 = $('[name="radio3"]:checked').val();
+
+        var desc = "";
+        var object = 0;
+        var question = 0;
+
+        if (radio1 != radio11) {
+          desc = q1;
+          question = ques1;
+          object = radio11;
+        } else if (radio2 != radio22) {
+          desc = q2;
+          question = ques2;
+          object = radio22;
+        } else {
+          desc = q3;
+          question = ques3;
+          object = radio33;
+        }
+
+        radio1 = radio11;
+        radio2 = radio22;
+        radio3 = radio33;
+
+        const verbId = "http://adlnet.gov/expapi/verbs/answered";
+        const objectId = "http://adlnet.gov/expapi/activities/question";
+
+        sendXAPIStatement(
+          verbId,
+          "answered",
+          objectId,
+          desc,
+          object,
+          question,
+          object
+        );
+
+        data = {
+          labels: ["①", "②", "③"],
+          datasets: [
+            {
+              label: "自己評価チャート",
+              backgroundColor: "RGBA(60,154,193, 0.3)",
+              borderColor: "RGBA(54,154,196, 1)",
+              pointBackgroundColor: "RGB(54,154,196)",
+              borderWidth: 2,
+              data: [radio1, radio2, radio3],
+              min: 0,
+              max: 5,
+              stepSize: 1,
+            },
+          ],
+        };
+
+        chart.destroy();
+
+        chart = new Chart(ctx, {
+          type: "radar",
+          data: data,
+          options: {
+            scale: {
+              r: {
+                min: 0,
+                max: 5,
+                stepSize: 1,
+              },
+            },
+          },
+        });
+
+        chart.render();
+      });
+    </script>
+  </body>
+</html>
